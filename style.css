@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+html{
+    user-select: none;
+}
+body{
+    background: url('wallhaven-x6mm8z.jpg') no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 400px;
+    height: 100vh;
+    margin: 0 auto;
+}
+.calc{
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 3px solid white;
+    backdrop-filter: blur(30px);
+    color: white;
+    width: 400px;
+    height: 500px;
+    padding: 20px;
+}
+.calc-screen {
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    color:black;
+    height: 55px;
+    /* padding: 18px; */
+    position: relative;
+    padding: 0px 10px;
+    display: grid;
+    justify-items: start;
+    align-items: center;
+}
+
+.calc-screen p {
+    align-items: center;
+    text-align: start;
+    font-size: 2.2rem;
+    margin: 0;
+}
+/* .field{
+    margin-bottom: 10px;
+    width: 100%;;
+    display: flex;
+    justify-content: center;
+}
+.field input{
+    padding: 20px;
+    border-radius: 10px;
+    font-size:25px;
+    border: none;
+    height: 65px;
+    width: 100%;
+} */
+input:focus{
+    outline:none;
+}
+.buttons{ 
+    height: 390px;
+    line-height: 70px;
+    display: grid;
+    grid-template-areas:
+    "ac ac percent division"
+    "seven eight nine multiply"
+    "four five six minus"
+    "one two three plus"
+    "zero zero dot equal";
+}
+.btn{
+    text-align: center;
+    font-size: 30px;
+    border-radius: 100%;
+    border:none;
+    width: 70px;
+    height: 70px;
+    margin: 0 10px;
+    transition: 0.2s;
+    box-shadow: rgba(255, 255, 255, 0.432) 0px 10px 38px, rgba(0, 0, 0, 0.22) 0px 0px 5px 3px;
+}
+.btn:hover{
+    filter: brightness(120%);
+    cursor: pointer;
+}
+.btn:active{
+    filter: brightness(90%);
+}
+.bg-orange{
+    background-color: orange;
+    color:white;
+}
+.bg-dark{
+    background-color:black;
+    color: white;
+    font-size: 40px;
+}
+.bg-white{
+    background-color: white;
+    color: black;
+}
+.ac{
+    border-radius: 30px;
+    width: 90%;
+    grid-area: ac;
+}
+.zero{
+    border-radius: 30px;
+    grid-area: zero;
+    width: 90%;
+}
