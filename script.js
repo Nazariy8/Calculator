@@ -1,8 +1,9 @@
 let a = '';
 let b = '';
+let previos_b = '';
 let sign = '';
-let result = false;
-
+let result = '';
+let finish = false;
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ','];
 const action = ['+', '-', '×', '/', '%'];
 
@@ -17,8 +18,9 @@ function clearAll() {
     a = '';
     b = '';
     sign = '';
-    result = false;
-    out.textContent = '';
+    result = '';
+    finish = false;
+    out.textContent = '0';
 }
 
 // * Головна функція 
@@ -42,12 +44,21 @@ document.querySelector('.buttons').onclick = (event) => {
             a += key;
             console.log(a)
             out.textContent = a;
-        } 
+        }  
+        else if (a != '' && sign != '' && result != '') {
+        // Переносимо результат в `a` і очищаємо `b`, щоб почати нову операцію
+        a = result;
+        b = '';  // Очищення другої змінної
+        result = '';  // Скидання результату
+        b += key;  // Продовжуємо введення нового числа для другої змінної
+        out.textContent = b;
+        console.log(a, sign, b);
+    }
         else if (a != "" && sign != '') {
             b += key;
-            console.log(a,sign,b)
+            console.log(a, sign, b)
             out.textContent = b;
-        }
+        } 
     }
 
     // * Якщо нажато клавішу + - * / 
@@ -59,16 +70,22 @@ document.querySelector('.buttons').onclick = (event) => {
     }
 
     if (key === '=') {
-        if (b ==='') b = a;
+        if (b === '') {
+            b = a;
+            result = b;
+        }
         switch (sign) {
             case "+":
                 a = (+a) + (+b);
+                result = a;
                 break;
             case "-":
                 a = a - b;
+                result = a;
                 break;
             case "×":
                 a = a * b;
+                result = a;
                 break;
             case "/":
                 if (b === '0') {
@@ -76,17 +93,20 @@ document.querySelector('.buttons').onclick = (event) => {
                     a = '';
                     b = '';
                     sign = '';
+                    result = '';
                     return;
                 }
                 a = a / b;
+                result = a;
                 break;
             case '%':
                 a = (a / 100) * b;
+                result = a;
                 break
         }
         finish = true;
-        out.textContent = a;
-        console.table(a, b, sign);
+        out.textContent = result;
+        console.table(a, sign, b, '=', );
     }
     }
 
